@@ -22,7 +22,7 @@ function lowerWithouthSpacing(params) {
 
 while (enter) {
     if (enter == exit) {
-        enter = prompt("Write a number to choose between : \n1) sign up \n2) log in \n3) change the password").toLowerCase() // ila bghiti tkhorji ketbi exit.    
+        enter = prompt("Write a number to choose between : \n1) sign up \n2) log in \n3) change the password").toLowerCase() // ila bghiti tkhorji ketbi exit.
     } else if (enter == 1) {
         // start name
         let fullName = prompt(`to sign up enter youre name`)
@@ -113,14 +113,14 @@ while (enter) {
 
         }
 
-
+        // start sign in
         while (true) {
             let enterLogin = prompt(`to log in enter youre email`)
 
             if (enterLogin == user.email[0]) {
                 let enterLogPassword = prompt(`to log in enter youre password`)
                 if (enterLogPassword == user.password[0]) {
-                    alert(`you successfully log in`)
+                    var successfully = confirm(`you successfully log in`)//^^^^^^^
                     break
                 }
             } else {
@@ -129,7 +129,7 @@ while (enter) {
         }
 
         console.log(user);
-        
+        // end sign in
 
         break
     } else if (enter == 2) {
@@ -139,4 +139,39 @@ while (enter) {
         alert(`you need to sign in first`)
         break
     }
+}
+//^ 3ereft knt kn3eref b let dakhel scoop ms 3ereft var hitach khrojt mno w dkholt lwehdakhor 3ad khedmat lita 
+if (successfully == true) {
+    //todo    start bank
+    let floussi = 0;
+    while (true) {
+        let myCIH = prompt("merhba bik f CIH bank:\n1) chhal f rasid\n2) versement\n3) retrait\n4) exit").toLowerCase();
+
+        if (myCIH == 1) {
+            alert(`3endek db f jibek : ${floussi} dh`);
+        } else if (myCIH == 2) {
+            let rassid = +prompt("dekhel lmablagh li bghiti tversi:");
+            if (!isNaN(rassid) && rassid > 0) {
+                floussi += rassid;
+                alert(`lmablagh li hotiti daz bi najah. lmontat jdid: ${floussi} dh`);
+            } else {
+                alert("madazetch!");
+            }
+        } else if (myCIH == 3) {
+            let withdrawAmount = +prompt("dekhel chhal bghity tkherej:");
+            if (!isNaN(withdrawAmount) && withdrawAmount > 0 && withdrawAmount <= floussi) {
+                floussi -= withdrawAmount;
+                alert(`lmablagh li kherejti daz bi najah. lmontat jdid: ${floussi} dh`);
+            } else {
+                alert("baraka 3lik salaw flouss!");
+            }
+        } else if (myCIH == 4 || myCIH == exit) { // ila bghiti tkhorji ketbi exit wla 4.
+            alert("merhba bik f ay we9t. good bye :)");
+            console.log(`rasid lhali li b9alik Mme.${user.name[0]} fel flouss : ${floussi} dh`);
+            break;
+        } else {
+            alert("ghalat try again:(");
+        }
+    }
+    //todo    end bank
 }
