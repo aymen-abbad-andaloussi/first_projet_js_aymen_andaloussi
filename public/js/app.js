@@ -48,7 +48,7 @@ while (enter) {
 
         // // start age
         // let fullAge = prompt(`to sign up enter youre Age`)
-        // if (fullAge.length > 2 || fullAge.match("  ") || /[^0-9 ]/.test(fullAge) || fullAge.startsWith(" ") || fullAge.endsWith(" ") || fullAge.includes(" ")) {
+        // if (fullAge.length > 2 || fullAge.match("  ") || /[^0-9 ]/.test(fullAge) || fullAge.includes(" ")) {
         //     while (fullAge.length > 2 || fullAge.match("  ") || /[^0-9 ]/.test(fullAge) || fullAge.includes(" ")) {
         //         if (fullAge.match("  ") || /[^0-9 ]/.test(fullAge)) {
         //             fullAge = prompt(`${fullAge} you write not a number`)
@@ -62,6 +62,21 @@ while (enter) {
         // console.log(+fullAge);
         // // end age
 
+        // start password
+        let fullPassword = prompt(`to sign up enter your Password`)
+        while (fullPassword.length < 7 || fullPassword.includes(" ") || !/[#@+\-*/0-9]/.test(fullPassword)) {
+            fullPassword = prompt(`Password must be at least 7 characters, contain one of [# @ + - * /], and no spaces`)
+        }
+        console.log(`the new password : ${fullPassword} is accepted`);
+        // end password
+
+        // start confirm password
+        let fullConfirmPassword = prompt(`confirm your Password`)
+        while (fullConfirmPassword !== fullPassword) {
+            fullConfirmPassword = prompt(`the password incorrect`)
+        }
+        console.log(`the password : ${fullPassword} is confirmed`);
+        // end confirm password
         break
     } else if (enter == 2) {
         prompt(`number is ${enter}`)
